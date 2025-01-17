@@ -28,15 +28,14 @@ jobs:
         run: npm install -g newman  # Install Newman globally
 
       # Step 4: Run Postman tests
-      - name: Run Postman tests
         run: |
           newman run postman/collection.json -r cli,html \
             --reporters-cli-no-summary \
             --reporters-html-export newman-report.html
 
-      # Step 5: Upload Newman report as an artifact (updated to v3)
+      # Step 5: Upload Newman report as an artifact
       - name: Upload Newman HTML Report as Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: newman-report
           path: newman-report.html
